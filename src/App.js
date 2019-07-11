@@ -26,21 +26,31 @@ function App() {
   const namechangedHandler = (event) =>{
     setPersonState({
       persons:[
-        {name:'Aswa', age:29},
+        {name:event.target.value, age:29},
         {name: event.target.value, age:29},
-        {name:'Arun', age:33}
+        {name:event.target.value, age:33}
       ],
       otherState:'Some other value'
     });
   };
 
+const style = {
+  backroundColor:'white',
+  font:'inherit',
+  border:'1px solid blue', 
+  padding:'8px',
+  cursor:'pointer'
+};
+
   return (
     <div className="App">
       <h1>This is React App</h1>
-      <button onClick={switchHandler.bind(this,'Aswanth M')}>Switch Name</button>
+      <button style={style}
+      onClick={switchHandler.bind(this,'Aswanth M')}>Switch Name</button>
       <Person 
         name={personState.persons[0].name} 
-        age={personState.persons[0].age}/>
+        age={personState.persons[0].age}
+        changed={namechangedHandler}/>
       <Person 
         name={personState.persons[1].name} 
         age={personState.persons[1].age}
@@ -48,7 +58,8 @@ function App() {
         changed={namechangedHandler}>Hobbies: Racing</Person>
       <Person 
         name={personState.persons[2].name} 
-        age={personState.persons[2].age}/>
+        age={personState.persons[2].age}
+        changed={namechangedHandler}/>
     </div>
   );
 }
